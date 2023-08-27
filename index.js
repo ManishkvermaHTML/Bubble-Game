@@ -15,7 +15,7 @@ function hitNumberGenerator() {
 }
 
 function timer() {
-   var time = 60;
+   var time = 6;
    let timer = setInterval(() => {
       if (time > 0) {
          time--;
@@ -23,34 +23,32 @@ function timer() {
       }
       else {
          clearInterval(timer);
-         console.log("end intervel");
+         gameOver();
       }
    }, 1000)
 }
-
-function score(cValue) {
+function increaseScore(){
+   scoreValue++;
+   document.getElementById("scoreBox").innerHTML = scoreValue;
+}
+function gameOver(){
+   // document.querySelector("#bottomPanel").innerHTML = `<button>Restart<button>`;
+   document.querySelector("#bottomPanel").innerHTML = `<h2> Game Over <h>`;
+}
+ 
    let bubble = document.getElementById("bottomPanel");
    bubble.addEventListener("click", (e) => {
       // console.log(e);
       let uValue = Number(e.target.innerText);
-      let isSameValue = cValue == uValue;
+      let isSameValue = randNum === uValue;
       if (isSameValue) {
-         scoreValue++;
-         document.getElementById("scoreBox").innerHTML = scoreValue;
+         increaseScore();
          hitNumberGenerator();
-         createBubble();
-         score(randNum);
-         // timer();
-         // console.log("inside if",scoreValue);
+         createBubble(); 
       }
-      // else{
-      //    // console.log("wrong number",e);
-      //    e.target.style.color = "red";
-      // }
-
    });
-}
+
 createBubble();
 hitNumberGenerator();
 timer();
-score(randNum);
+ 
