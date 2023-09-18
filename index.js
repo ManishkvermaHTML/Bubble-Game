@@ -14,18 +14,18 @@ function hitNumberGenerator() {
    document.querySelector("#hitNumber").innerHTML = randNum;
 }
 
-function timer() {
-   var time = 6;
+function timer(num) {
+    
    let timer = setInterval(() => {
-      if (time > 0) {
-         time--;
-         document.getElementById("timer").innerHTML = time;
+      if (num > 0) {
+         num--;
+         document.getElementById("timer").innerHTML = num;
       }
       else {
          clearInterval(timer);
          gameOver();
       }
-   }, 1000)
+   }, 2000)
 }
 function increaseScore(){
    scoreValue++;
@@ -44,11 +44,12 @@ function gameOver(){
       if (isSameValue) {
          increaseScore();
          hitNumberGenerator();
-         createBubble(); 
+         createBubble();
+         
       }
    });
 
 createBubble();
 hitNumberGenerator();
-timer();
+timer(10);
  
